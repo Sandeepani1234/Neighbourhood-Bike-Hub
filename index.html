@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1f6b4f">
+<meta name="description" content="Neighbourhood Bike Hub — free shared bicycles and repair equipment for residents in Gotland.">
+<title>Neighbourhood Bike Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home"><span class="brand-mark">↗</span><span>Neighbourhood<strong>Bike Hub</strong></span></a>
+  <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+  <nav id="nav">
+    <a href="#home" data-nav="home">Home</a><a href="#borrow" data-nav="borrow">Borrow a Bike</a><a href="#repair" data-nav="repair">Repair Your Bike</a><a href="#report" data-nav="report">Report a Problem</a><a href="#rating" data-nav="rating">Our Rating</a>
+  </nav>
+  <div class="account-area" id="accountArea"><button class="btn btn-outline btn-small" id="loginOpen">Resident login</button></div>
+</header>
+
+<main>
+<section class="page active" id="home">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="eyebrow"><i></i> Shared locally in Gotland</span>
+      <h1>Your neighbourhood.<br><em>Your bike.</em><br>Your greener journey.</h1>
+      <p class="lead">Borrow a bicycle for free, fix the little things, and make everyday trips easier — without reaching for the car keys.</p>
+      <div class="hero-actions"><a class="btn" href="#borrow">Find a free bike <span>↗</span></a><a class="text-link" href="#how">How it works <b>→</b></a></div>
+      <div class="trust-line"><span class="check">✓</span> Free for registered residents · No rental fees</div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=85" alt="Bicycle ready for an everyday ride">
+      <div class="photo-card"><span class="photo-icon">♧</span><div><strong>Ride more. Drive less.</strong><small>Little trips can make a difference.</small></div></div>
+      <div class="free-stamp"><b>0 kr</b><small>to borrow</small></div>
+    </div>
+  </div>
+  <div class="availability-strip">
+    <div><span class="eyebrow">Live demo inventory</span><h2>Ready when you are.</h2><p>Check the shared bikes available at your neighbourhood hub.</p></div>
+    <div class="availability-counts" id="homeInventory"></div>
+    <a class="round-arrow" href="#borrow" aria-label="Browse bikes">↗</a>
+  </div>
+  <section class="content-section" id="how">
+    <div class="section-head"><div><span class="eyebrow">The essentials</span><h2>Everything in one place.</h2></div><p>Simple tools and shared bikes to support everyday cycling.</p></div>
+    <div class="feature-grid">
+      <a href="#borrow" class="feature"><span class="feature-icon green">↗</span><small>SHARE & RIDE</small><h3>Borrow a Bike</h3><p>Choose a normal bike, an e-bike or a cargo bike — all free.</p><b>Check availability →</b></a>
+      <a href="#repair" class="feature"><span class="feature-icon yellow">⌁</span><small>KEEP ROLLING</small><h3>Repair Your Bike</h3><p>Use the shared repair station and follow simple maintenance guides.</p><b>Explore repair tips →</b></a>
+      <a href="#report" class="feature"><span class="feature-icon coral">＋</span><small>HELP US IMPROVE</small><h3>Report a Problem</h3><p>Tell the housing provider if a bike or tool needs attention.</p><b>Send a report →</b></a>
+      <a href="#about" class="feature"><span class="feature-icon blue">◎</span><small>OUR SHARED SPACE</small><h3>About Our Bike Hub</h3><p>Learn how residents and housing providers keep the hub working.</p><b>Meet the hub →</b></a>
+    </div>
+  </section>
+  <section class="green-band"><div><span class="eyebrow pale">A better way to get around</span><h2>Small journeys.<br>Positive change.</h2><p>For short everyday trips, cycling can be a practical alternative to driving. A shared Bike Hub makes bikes, basic repair tools and helpful information easier to access close to home.</p><a href="#about" class="btn btn-white">Discover the hub <span>→</span></a></div><div class="benefit-list"><article><span>01</span><div><b>Free to use</b><p>Registered residents borrow shared bikes and use repair tools without paying.</p></div></article><article><span>02</span><div><b>Choose your ride</b><p>Pick a normal bicycle, an electric bicycle or a cargo bicycle.</p></div></article><article><span>03</span><div><b>Look after the hub</b><p>Return bikes on time and report problems so the next resident can ride.</p></div></article></div></section>
+  <section class="content-section"><div class="closing-cta"><div><span class="eyebrow">Your next trip starts here</span><h2>Make room for a greener journey.</h2></div><a href="#borrow" class="btn">Borrow a bike for free <span>↗</span></a></div></section>
+</section>
+
+<section class="page inner" id="borrow">
+  <div class="page-intro"><span class="eyebrow">Shared locally</span><h1>Borrow a bike.<br><em>For free.</em></h1><p>Choose the bicycle that suits your journey. All bikes are free for registered residents of participating properties.</p><div class="prototype-note">DEMO INVENTORY · 3 normal bikes · 1 e-bike · 1 cargo bike</div></div>
+  <div class="filter-bar"><div><b>Our shared fleet</b><span id="fleetSummary">Checking availability…</span></div><div class="filter-controls"><label for="filterDate">Check date</label><input type="date" id="filterDate"><label for="filterStart">From</label><select id="filterStart"></select><label for="filterEnd">To</label><select id="filterEnd"></select></div></div>
+  <div id="bikeGrid" class="bike-grid"></div>
+  <div id="noBikes" class="empty hidden">No bikes are available for this time slot. Try another time or date.</div>
+  <div class="info-note"><span>ⓘ</span><p><b>Booking rules</b><br>Choose a start and end time. The initial limit is two hours per booking. Bikes marked as needing maintenance or out of service cannot be booked. Collection and return instructions are shown after confirmation.</p></div>
+  <div class="section-head booking-head"><div><span class="eyebrow">Your activity</span><h2>Upcoming bookings</h2></div><span class="count-label" id="residentBookingCount">Sign in to view your bookings</span></div>
+  <div id="residentBookings" class="booking-list"></div>
+</section>
+
+<section class="page inner" id="repair">
+  <div class="page-intro"><span class="eyebrow">Keep rolling</span><h1>Repair your bike.</h1><p>Our shared repair station is free to use for your own bicycle. Take care of the tools and leave the space ready for the next person.</p></div>
+  <div class="equipment-grid">
+    <article><span class="equipment-icon">◉</span><div><b>Floor pump</b><small>Pressure gauge included</small></div><span class="equipment-status" id="pumpPublicStatus">Available</span></article>
+    <article><span class="equipment-icon">⌁</span><div><b>Repair stand</b><small>Hold your bike steady</small></div><span class="equipment-status" id="standPublicStatus">Available</span></article>
+    <article><span class="equipment-icon">⚒</span><div><b>Hex keys & screwdrivers</b><small>For small adjustments</small></div><span class="equipment-status" id="toolsPublicStatus">Available</span></article>
+    <article><span class="equipment-icon">◌</span><div><b>Tyre levers & patch kit</b><small>Availability depends on supplies</small></div><span class="equipment-status" id="patchPublicStatus">Check before use</span></article>
+  </div>
+  <div class="safety"><span>!</span><div><b>Safety first</b><p>Never ride a bicycle with faulty brakes or another safety-critical problem. Complex repairs should be handled by a professional bicycle mechanic. If shared equipment is broken or missing, report it before use.</p></div></div>
+  <div class="section-head"><div><span class="eyebrow">Step-by-step</span><h2>Simple maintenance guides.</h2></div><p>These guides cover basic checks only. Stop if you are unsure.</p></div>
+  <div class="guide-grid">
+    <article class="guide"><span>01</span><div class="guide-symbol">◉</div><h3>Inflate your tyres</h3><p>Remove the valve cap and attach the pump securely. Pump in short bursts, then remove the pump and replace the cap.</p><ul><li>Check the valve type first.</li><li>Use the correct pump head.</li><li>Follow the pressure range on the tyre.</li></ul></article>
+    <article class="guide"><span>02</span><div class="guide-symbol">◌</div><h3>Check tyre pressure</h3><p>Tyres should not look flat or have visible damage.</p><ul><li>Look for cuts, bulges and embedded objects.</li><li>Use a gauge when available.</li><li>Check pressure before longer trips.</li></ul></article>
+    <article class="guide"><span>03</span><div class="guide-symbol">⌕</div><h3>Identify a puncture</h3><p>A tyre that keeps losing air may have a puncture or a damaged valve.</p><ul><li>Inspect the tyre carefully.</li><li>Do not handle sharp objects with bare hands.</li><li>Ask a mechanic if you are unsure.</li></ul></article>
+    <article class="guide"><span>04</span><div class="guide-symbol">✓</div><h3>Basic bicycle checks</h3><p>Make a quick check before riding to catch common problems.</p><ul><li>Check tyres and wheels.</li><li>Look for loose parts.</li><li>Make sure lights and reflectors are present where needed.</li></ul></article>
+    <article class="guide"><span>05</span><div class="guide-symbol">↔</div><h3>Check your brakes</h3><p>Brakes should feel firm and stop the bike safely.</p><ul><li>Squeeze both brake levers.</li><li>Walk the bike and test each brake gently.</li><li>Do not ride if either brake is faulty.</li></ul></article>
+    <article class="guide"><span>06</span><div class="guide-symbol">⚒</div><h3>Use tools safely</h3><p>Use the right tool for the job. Never force a bolt or adjustment.</p><ul><li>Keep fingers away from moving parts.</li><li>Return tools after use.</li><li>Report broken or missing equipment.</li></ul><a href="#report" class="text-link">Report an issue →</a></article>
+  </div>
+</section>
+
+<section class="page inner" id="report">
+  <div class="page-intro"><span class="eyebrow">Help us improve</span><h1>Report a problem.</h1><p>Tell the housing provider what needs attention. In this prototype, reports are saved in this browser only.</p></div>
+  <div class="report-layout"><aside class="report-aside"><span class="report-symbol">＋</span><h2>See something?<br>Say something.</h2><p>Help keep shared bikes and repair equipment safe for everyone.</p><div class="aside-rule"><b>What happens next?</b><p>Your demo report gets a reference number and appears in the local admin dashboard. It is not sent to a real housing provider.</p></div></aside>
+  <form id="reportForm" class="form-card"><h2>Problem details</h2><p class="muted">Fields marked with * are required.</p>
+    <label for="reportCategory">Problem category *</label><select id="reportCategory" required><option value="">Choose a category</option><option>Broken repair tools</option><option>Damaged normal bicycle</option><option>Electric bicycle or battery problem</option><option>Damaged cargo bicycle</option><option>Missing equipment</option><option>Other maintenance issue</option></select>
+    <label for="reportBike">Bicycle / equipment ID</label><select id="reportBike"><option value="">Not applicable / not sure</option></select>
+    <label for="reportDescription">Description *</label><textarea id="reportDescription" rows="5" minlength="8" required placeholder="Describe the issue and where you noticed it."></textarea>
+    <label for="reportPhoto">Photo (optional)</label><input type="file" id="reportPhoto" accept="image/*"><small class="help">Prototype limitation: the photo is not uploaded or stored.</small>
+    <label for="reportContact">Contact details (optional)</label><input id="reportContact" placeholder="Email or phone">
+    <button class="btn full" type="submit">Submit demo report <span>→</span></button>
+  </form></div><div id="reportResult" class="success hidden" role="status"></div>
+</section>
+
+<section class="page inner" id="rating">
+  <div class="page-intro centered"><span class="eyebrow">Our proposed framework</span><h1>Build a more<br><em>bike-friendly</em> neighbourhood.</h1><p>Three levels help housing providers improve their facilities step by step. Each level includes all requirements from the previous level.</p></div>
+  <div class="rating-cards">
+    <article class="rating bronze"><div class="rating-top"><span>BRONZE</span><b>★</b></div><h2>Basic Bike Hub</h2><p>The essential setup for an accessible and useful repair point.</p><ul><li>Accessible bicycle parking and hub location</li><li>Working repair tools and pump</li><li>QR code and maintenance instructions</li><li>Documented security and maintenance plan</li></ul><small>LEVEL 01</small></article>
+    <article class="rating silver"><div class="rating-top"><span>SILVER</span><b>★★</b></div><h2>Shared Bike Hub</h2><p>Everything in Bronze, plus free shared bicycles.</p><ul><li>All Bronze requirements</li><li>Secure bicycle storage</li><li>Free shared normal bicycles</li><li>Working booking system and clear collection/return process</li></ul><small>LEVEL 02</small></article>
+    <article class="rating gold"><div class="rating-top"><span>GOLD</span><b>★★★</b></div><h2>Well-Managed Bike Hub</h2><p>A maintained service that improves through feedback.</p><ul><li>All Silver requirements</li><li>Shared e-bikes and/or cargo bicycles</li><li>Regular documented equipment inspections</li><li>Fault-reporting and repair process</li><li>Usage monitoring and resident feedback</li></ul><small>LEVEL 03</small></article>
+  </div>
+  <div class="disclaimer"><span>ⓘ</span><p><b>Important:</b> These criteria and rating levels are proposed for this project. They are not an official Energicentrum Gotland certification.</p></div>
+</section>
+
+<section class="page inner" id="about">
+  <div class="page-intro"><span class="eyebrow">About the project</span><h1>A shared space for<br><em>better everyday cycling.</em></h1><p>The Neighbourhood Bike Hub brings shared bicycles, basic repair equipment and practical information closer to residents in Gotland.</p></div>
+  <div class="about-grid"><div><h2>How the hub works</h2><p>Housing providers and housing associations install and manage a physical Bike Hub within residential properties. Registered residents can borrow normal bicycles, electric bicycles and cargo bicycles for free, or use the repair station for their own bike.</p><p>The website helps residents check availability, request a booking, read repair guides and report issues. The housing provider manages the fleet, maintenance, resident access and the real collection process.</p><a class="btn" href="#borrow">Explore the bikes <span>↗</span></a></div><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=1000&q=85" alt="Bicycle in a green outdoor setting"></div>
+  <div class="section-head"><div><span class="eyebrow">Who does what?</span><h2>Shared responsibility.</h2></div></div>
+  <div class="role-grid"><article><span>01</span><h3>Residents</h3><p>Register, book a bike, follow hub rules, return bikes on time and report faults.</p></article><article><span>02</span><h3>Housing provider</h3><p>Manage access, bookings, the bicycle fleet, equipment checks and maintenance.</p></article><article><span>03</span><h3>Project partners</h3><p>Energicentrum Gotland could potentially support the concept with guidance and encourage participation.</p></article></div>
+  <div class="disclaimer"><span>ⓘ</span><p>This is a demonstration prototype. It does not connect to a real housing provider or official service.</p></div>
+</section>
+
+<section class="page inner" id="qr">
+  <div class="qr-card"><span class="qr-label">NEIGHBOURHOOD BIKE HUB</span><span class="eyebrow">Welcome, neighbour</span><h1>Your hub.<br><em>Your next ride.</em></h1><p>Quick access to the shared bicycles and repair station. No app required.</p><div class="qr-links"><a href="#borrow"><span>↗</span><div><b>Borrow a bicycle for free</b><small>Choose a bike and check availability</small></div><strong>→</strong></a><a href="#repair"><span>⌁</span><div><b>Repair instructions</b><small>Simple checks before you ride</small></div><strong>→</strong></a><a href="#report"><span>＋</span><div><b>Report a problem</b><small>Tell us about equipment issues</small></div><strong>→</strong></a><a href="#about"><span>ⓘ</span><div><b>Hub rules & contact</b><small>How the shared hub works</small></div><strong>→</strong></a></div><div class="qr-rules"><b>Before you go</b><p>Return the bike on time, leave tools ready for the next person and report damaged equipment. Never ride with faulty brakes.</p></div><small class="qr-url" id="qrUrl"></small></div>
+</section>
+
+<section class="page inner" id="admin">
+  <div class="page-intro"><span class="eyebrow">Housing provider</span><h1>Hub management.</h1><p>Manage fleet availability, bookings, resident registrations and maintenance reports.</p><span class="prototype-note">PROTOTYPE ADMIN · DEMO DATA STORED IN THIS BROWSER</span></div>
+  <div id="adminGate" class="admin-gate"><span class="lock">⌑</span><h2>Administrator sign-in required</h2><p>Sign in with the sample administrator account to access management tools.</p><button class="btn" id="adminLoginBtn">Sign in as demo administrator</button></div>
+  <div id="adminDashboard" class="hidden">
+    <div class="admin-stats"><article><span>Total bicycles</span><b id="statTotal">5</b><small>In demo fleet</small></article><article><span>Available now</span><b id="statAvailable">0</b><small>Ready to borrow</small></article><article><span>Upcoming bookings</span><b id="statBookings">0</b><small>Active reservations</small></article><article><span>Open reports</span><b id="statReports">0</b><small>Need follow-up</small></article></div>
+    <div class="admin-columns">
+      <div class="admin-card"><div class="admin-card-head"><div><h2>Bicycle fleet</h2><p>Update status and battery information.</p></div><button class="btn btn-small" id="addBike">+ Add bicycle</button></div><div id="adminFleet" class="fleet-admin"></div><div id="bikeEditor" class="editor hidden"><h3 id="editorTitle">Add bicycle</h3><form id="bikeForm"><input type="hidden" id="editOriginalId"><label for="bikeId">Bicycle ID *</label><input id="bikeId" required placeholder="e.g. NB-06"><label for="bikeType">Type *</label><select id="bikeType"><option>Normal bicycle</option><option>Electric bicycle</option><option>Cargo bicycle</option></select><label for="bikeStatus">Status *</label><select id="bikeStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><div id="batteryField"><label for="bikeBattery">Battery status</label><select id="bikeBattery"><option>100%</option><option>75%</option><option>50%</option><option>25%</option><option>Needs charging</option><option>Not applicable</option></select></div><div class="editor-actions"><button class="btn btn-small" type="submit">Save bicycle</button><button class="btn btn-outline btn-small" type="button" id="cancelBikeEdit">Cancel</button></div></form></div></div>
+      <div class="admin-card"><div class="admin-card-head"><div><h2>Hub settings</h2><p>Configure the maximum booking duration.</p></div></div><label for="durationLimit">Booking limit</label><select id="durationLimit"><option value="1">1 hour</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="6">6 hours</option></select><button class="btn full" id="saveDuration">Save booking limit</button><div class="divider"></div><h3>Repair station equipment</h3><div class="equipment-admin"><label for="pumpStatus">Pump</label><select id="pumpStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><label for="standStatus">Repair stand</label><select id="standStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><label for="toolsStatus">Tools</label><select id="toolsStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><label for="patchStatus">Puncture kit</label><select id="patchStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><button class="btn btn-outline full" id="saveRepairStatus">Save repair equipment</button></div></div>
+    </div>
+    <div class="admin-card table-card"><div class="admin-card-head"><div><h2>Upcoming bookings</h2><p>Review resident reservations.</p></div><button class="btn btn-outline btn-small" id="exportCsv">Export CSV ↓</button></div><div class="table-wrap"><table><thead><tr><th>Resident</th><th>Bike</th><th>Date</th><th>Time</th><th>Resident ID</th><th>Status</th><th></th></tr></thead><tbody id="adminBookings"></tbody></table></div><div id="adminBookingEmpty" class="empty hidden">No bookings have been made yet.</div></div>
+    <div class="admin-card table-card"><div class="admin-card-head"><div><h2>Maintenance reports</h2><p>Follow issues until they are resolved.</p></div><span id="adminReportCount" class="count-label"></span></div><div id="adminReports" class="admin-report-list"></div><div id="adminReportEmpty" class="empty">No reports yet.</div></div>
+    <div class="admin-card"><div class="admin-card-head"><div><h2>Resident registration</h2><p>Review demo resident accounts and access status.</p></div></div><div id="adminResidents" class="resident-list"></div></div>
+    <div class="admin-card"><div class="admin-card-head"><div><h2>Monthly usage</h2><p>Active demo bookings by bicycle category.</p></div></div><div id="usageBars" class="usage-bars"></div></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="footer-top"><a class="brand" href="#home"><span class="brand-mark">↗</span><span>Neighbourhood<strong>Bike Hub</strong></span></a><p>Your neighbourhood. Your bike. Your greener journey.</p><div class="footer-nav"><a href="#borrow">Borrow a bike</a><a href="#repair">Repair guide</a><a href="#rating">Our rating</a><a href="#qr">Quick access</a><a href="#admin">Admin</a></div></div><div class="footer-bottom"><span>© 2026 Neighbourhood Bike Hub · University innovation project</span><span>All borrowing and repair tools are free <b>✳</b></span></div></footer>
+
+<div class="modal-backdrop hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="modal"><button class="modal-close" id="loginClose" aria-label="Close">×</button><span class="eyebrow">Resident access</span><h2 id="loginTitle">Welcome back.</h2><p>Sign in or register with a demo resident account to book a bike.</p><div class="tabs"><button class="tab active" data-tab="login">Login</button><button class="tab" data-tab="register">Register</button></div>
+    <form id="loginForm"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required placeholder="resident@example.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required placeholder="Enter password"><div id="registerFields" class="hidden"><label for="registerName">Full name</label><input id="registerName" placeholder="Your full name"><label for="registerId">Resident / apartment ID</label><input id="registerId" placeholder="e.g. A-204"><label class="checkbox-line"><input type="checkbox" id="registerApproved"> Administrator-approved registration (demo only)</label></div><div id="loginError" class="form-error hidden"></div><button class="btn full" id="loginSubmit" type="submit">Sign in</button></form>
+    <div class="demo-accounts"><b>Sample resident</b><span>resident@example.com / BikeHub123</span><b>Sample administrator</b><span>admin@bikehub.demo / AdminHub123</span><small>Prototype authentication only. Do not use real passwords or personal data.</small></div>
+  </div>
+</div>
+<div class="modal-backdrop hidden" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+  <div class="modal booking-modal"><button class="modal-close" id="bookingClose" aria-label="Close">×</button><span class="eyebrow">Free shared bicycle</span><h2 id="bookingModalTitle">Book your ride.</h2><p id="selectedBikeLabel"></p><form id="bookingForm"><input type="hidden" id="selectedBikeId"><label for="bookingDate">Date *</label><input type="date" id="bookingDate" required><div class="two-col"><div><label for="bookingStart">Start time *</label><select id="bookingStart" required></select></div><div><label for="bookingEnd">End time *</label><select id="bookingEnd" required></select></div></div><div id="bookingCheck" class="inline-msg">Choose a date and time.</div><div id="bookingError" class="form-error hidden"></div><div class="free-price"><span>Booking cost</span><b>0 kr · Free</b></div><button type="submit" class="btn full">Confirm free booking <span>→</span></button></form>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
