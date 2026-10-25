@@ -1,152 +1,148 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1f6b4f">
-<meta name="description" content="Neighbourhood Bike Hub — free shared bicycles and repair equipment for residents in Gotland.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Neighbourhood Bike Hub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<style>
+:root{--green:#245b43;--green2:#347b59;--mint:#eaf3ec;--cream:#f7f8f4;--ink:#20312a;--muted:#64736a;--gold:#d9a441;--line:#dce5dc;--white:#fff;--red:#a54136}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+header{background:var(--green);color:white;padding:18px max(22px,calc((100vw - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.4px}.brand span{display:block;font-size:11px;font-weight:500;letter-spacing:1.4px;color:#d8e9dc;text-transform:uppercase}
+nav{display:flex;gap:8px;flex-wrap:wrap}button,.btn{border:0;border-radius:10px;padding:10px 14px;font:inherit;font-weight:700;cursor:pointer;transition:.15s}button:hover,.btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+nav button{background:transparent;color:white;padding:8px 10px}nav button.active,nav button:hover{background:#ffffff20}
+main{max-width:1180px;margin:auto;padding:28px 22px 56px}.hero{background:linear-gradient(120deg,#e8f2e9,#f7f8f4);border:1px solid var(--line);border-radius:24px;padding:30px;display:grid;grid-template-columns:1.45fr .8fr;gap:28px;align-items:center}
+.eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;color:var(--green2)}h1{font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-1.5px;margin:10px 0 14px;color:#183b2b}h2{font-size:25px;letter-spacing:-.5px;margin:0 0 8px}h3{margin:0 0 8px;font-size:17px}p{margin:0 0 12px}.muted{color:var(--muted)}.hero-art{background:var(--green);border-radius:20px;min-height:205px;display:flex;align-items:center;justify-content:center;color:white;text-align:center;padding:20px}.bike-icon{font-size:80px;line-height:1}.hero-art p{margin:10px 0 0;color:#e4f1e6}
+.btn-primary{background:var(--green);color:white}.btn-light{background:white;color:var(--green);border:1px solid var(--line)}.btn-gold{background:var(--gold);color:#263329}.btn-danger{background:#f8e9e6;color:var(--red)}.small{font-size:12px}.section{margin-top:32px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 3px 12px #163d2910}.bike-card{display:flex;flex-direction:column;gap:10px}.bike-top{display:flex;justify-content:space-between;gap:10px;align-items:start}.bike-emoji{font-size:36px;background:var(--mint);border-radius:14px;width:66px;height:66px;display:grid;place-items:center}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800;background:var(--mint);color:var(--green)}.pill.warn{background:#fff1d7;color:#815500}.pill.red{background:#fbe8e5;color:var(--red)}.price{font-size:24px;font-weight:800;color:var(--green)}.price small{font-size:12px;font-weight:500;color:var(--muted)}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.feature{background:white;border:1px solid var(--line);border-radius:15px;padding:18px}.feature .icon{font-size:25px}.feature strong{display:block;margin:7px 0 4px}
+form{display:grid;gap:14px}.field{display:grid;gap:6px}label{font-size:13px;font-weight:750;color:#40564a}input,select,textarea{width:100%;border:1px solid #cad8cd;border-radius:10px;padding:11px 12px;font:inherit;background:white;color:var(--ink)}input:focus,select:focus,textarea:focus{outline:2px solid #9cc6a8;border-color:var(--green2)}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.price-box{background:var(--mint);border-radius:12px;padding:14px;display:flex;justify-content:space-between;gap:10px;align-items:center}.notice{background:#fff4dc;border:1px solid #f1d69d;padding:12px 14px;border-radius:12px;font-size:13px}.success{background:#e5f4e8;border:1px solid #b8dbbf;color:#205b34;padding:12px 14px;border-radius:12px}.error{background:#fbe8e5;border:1px solid #edc3bd;color:#96382e;padding:12px 14px;border-radius:12px}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f0f5f0;color:#43584b}.empty{padding:26px;text-align:center;color:var(--muted);background:white;border:1px dashed #c7d6ca;border-radius:14px}.stars{font-size:23px;letter-spacing:4px;color:var(--gold)}.level{border:1px solid var(--line);border-radius:16px;background:white;padding:18px}.level h3{display:flex;align-items:center;gap:8px}.level .stars{font-size:20px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi{background:white;border:1px solid var(--line);border-radius:15px;padding:16px}.kpi strong{font-size:25px;color:var(--green);display:block}.hidden{display:none!important}.page-title{margin-bottom:20px}.page-title p{max-width:760px}.footer{background:#eaf1e9;padding:24px;text-align:center;color:var(--muted);font-size:12px}.modal-backdrop{position:fixed;inset:0;background:#0e2519a6;display:grid;place-items:center;padding:20px;z-index:10}.modal{background:white;border-radius:20px;padding:24px;max-width:560px;width:100%;max-height:90vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:start}.x{background:#edf3ed;color:var(--green);padding:6px 10px}.code{font-family:ui-monospace,monospace;background:#f1f5f1;border:1px solid var(--line);padding:3px 6px;border-radius:5px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.features{grid-template-columns:repeat(2,1fr)}.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:570px){header{padding:16px}.grid,.grid.two,.form-grid{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}main{padding:18px 14px 40px}.hero{padding:22px}.hero-art{min-height:150px}.bike-icon{font-size:55px}}
+</style>
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#home"><span class="brand-mark">↗</span><span>Neighbourhood<strong>Bike Hub</strong></span></a>
-  <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
-  <nav id="nav">
-    <a href="#home" data-nav="home">Home</a><a href="#borrow" data-nav="borrow">Borrow a Bike</a><a href="#repair" data-nav="repair">Repair Your Bike</a><a href="#report" data-nav="report">Report a Problem</a><a href="#rating" data-nav="rating">Our Rating</a>
-  </nav>
-  <div class="account-area" id="accountArea"><button class="btn btn-outline btn-small" id="loginOpen">Resident login</button></div>
+<header>
+ <div class="brand">🚲 Neighbourhood Bike Hub <span>Better everyday journeys</span></div>
+ <nav id="nav">
+  <button class="active" data-page="home">Home</button><button data-page="book">Book a bike</button><button data-page="repair">Repair station</button><button data-page="mybookings">My bookings</button><button data-page="rating">Star system</button><button data-page="admin">Admin demo</button>
+ </nav>
 </header>
-
 <main>
-<section class="page active" id="home">
-  <div class="hero">
-    <div class="hero-text">
-      <span class="eyebrow"><i></i> Shared locally in Gotland</span>
-      <h1>Your neighbourhood.<br><em>Your bike.</em><br>Your greener journey.</h1>
-      <p class="lead">Borrow a bicycle for free, fix the little things, and make everyday trips easier — without reaching for the car keys.</p>
-      <div class="hero-actions"><a class="btn" href="#borrow">Find a free bike <span>↗</span></a><a class="text-link" href="#how">How it works <b>→</b></a></div>
-      <div class="trust-line"><span class="check">✓</span> Free for registered residents · No rental fees</div>
-    </div>
-    <div class="hero-photo">
-      <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=85" alt="Bicycle ready for an everyday ride">
-      <div class="photo-card"><span class="photo-icon">♧</span><div><strong>Ride more. Drive less.</strong><small>Little trips can make a difference.</small></div></div>
-      <div class="free-stamp"><b>0 kr</b><small>to borrow</small></div>
-    </div>
+<section id="page-home">
+ <div class="hero">
+  <div><div class="eyebrow">A housing-provider pilot concept</div><h1>Make the easy trip a bike trip.</h1><p class="muted">Borrow a bike for local errands, get access to a cargo bike for bigger loads, or use the repair station to keep your own bike moving. Designed for residents and managed by the housing provider.</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px"><button class="btn-primary" onclick="showPage('book')">Book a bike</button><button class="btn-light" onclick="showPage('repair')">Find repair tools</button></div><p class="small muted" style="margin-top:14px">Intro offer: your first 5 bookings are free per resident. After that, clear low-cost rates apply.</p></div>
+  <div class="hero-art"><div><div class="bike-icon">🚲</div><h2 style="color:white">Your local bike hub</h2><p>Borrow • Repair • Return • Repeat</p></div></div>
+ </div>
+ <div class="section"><div class="section-head"><div><div class="eyebrow">Choose your ride</div><h2>Shared bikes and transparent prices</h2><p class="muted">Prices below are proposed example rates for a 2-hour booking, not confirmed local market prices.</p></div></div><div class="grid" id="home-bike-list"></div></div>
+ <div class="section"><div class="section-head"><div><div class="eyebrow">More than a bicycle</div><h2>Everything residents need in one place</h2></div></div>
+  <div class="features">
+   <div class="feature"><div class="icon">📱</div><strong>Simple booking</strong><span class="muted small">Check availability and reserve online.</span></div>
+   <div class="feature"><div class="icon">🧰</div><strong>Repair station</strong><span class="muted small">Pump, basic tools and QR repair guides.</span></div>
+   <div class="feature"><div class="icon">🔒</div><strong>Safer storage</strong><span class="muted small">Secure parking and clear return rules.</span></div>
+   <div class="feature"><div class="icon">🌱</div><strong>Resident-first</strong><span class="muted small">Five free introductory bookings per resident.</span></div>
   </div>
-  <div class="availability-strip">
-    <div><span class="eyebrow">Live demo inventory</span><h2>Ready when you are.</h2><p>Check the shared bikes available at your neighbourhood hub.</p></div>
-    <div class="availability-counts" id="homeInventory"></div>
-    <a class="round-arrow" href="#borrow" aria-label="Browse bikes">↗</a>
+ </div>
+ <div class="section grid two"><div class="card"><h3>How the 5 free bookings work</h3><p>Enter your resident ID when booking. Your first five confirmed bookings cost 0 SEK. After you use those five, the normal rate is shown before you confirm.</p><p class="small muted">Demo note: this prototype uses a browser on this device to remember bookings. It does not verify real residency or take payments.</p></div><div class="card"><h3>For housing providers</h3><p>Start with one property, check demand, and add more bikes only when residents use the service. The separate Bronze / Silver / Gold stars rate how complete the property's cycling offer is—not the resident or the bicycle.</p><button class="btn-light" onclick="showPage('rating')">Understand the star system</button></div></div>
+</section>
+
+<section id="page-book" class="hidden">
+ <div class="page-title"><div class="eyebrow">Reserve a shared bike</div><h1 style="font-size:36px">Book a bike</h1><p class="muted">Choose a bike, date and time. You will see your price and how many free introductory bookings remain before confirming.</p></div>
+ <div class="grid two">
+  <div class="card"><form id="booking-form">
+   <div class="field"><label for="resident">Resident ID / household code</label><input id="resident" required placeholder="e.g. APT-204" autocomplete="off"><span class="small muted">For this demo, use the same code each time on this browser to track your 5 free bookings.</span></div>
+   <div class="form-grid"><div class="field"><label for="bikeType">Bike type</label><select id="bikeType"><option value="standard">Standard bicycle</option><option value="ebike">Electric bicycle (e-bike)</option><option value="cargo">Cargo bike</option></select></div><div class="field"><label for="duration">Booking length</label><select id="duration"><option value="2">2 hours</option><option value="1">1 hour</option><option value="3">3 hours</option><option value="4">4 hours</option></select></div></div>
+   <div class="form-grid"><div class="field"><label for="date">Date</label><input type="date" id="date" required></div><div class="field"><label for="start">Start time</label><select id="start" required></select></div></div>
+   <div class="field"><label for="bikeId">Available bike</label><select id="bikeId" required></select></div>
+   <div class="price-box"><div><strong id="price-label">Your booking price</strong><div id="price-note" class="small muted">First 5 bookings are free.</div></div><div class="price" id="price-display">0 SEK</div></div>
+   <div id="booking-message" aria-live="polite"></div><button class="btn-primary" type="submit">Confirm booking</button>
+   <p class="small muted">Prototype only: no real payment is collected and access/identity checks are not connected.</p>
+  </form></div>
+  <div class="card"><h2>Pricing proposal</h2><p class="muted">Example prices per 2 hours after the free introduction offer.</p><div id="price-table"></div><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><h3>Booking rules</h3><ul><li>One bike per booking.</li><li>Bookings cannot overlap for the same bike.</li><li>Return the bike on time and lock it securely.</li><li>Report damage before the next resident uses it.</li><li>The housing provider should set a late-return and damage policy before launch.</li></ul><div class="notice">Suggested launch offer: the first five confirmed bookings per resident are free, regardless of bike type. After that, the normal rate applies. The housing provider can change this rule.</div></div>
+ </div>
+</section>
+
+<section id="page-repair" class="hidden">
+ <div class="page-title"><div class="eyebrow">Keep your own bike running</div><h1 style="font-size:36px">Repair station</h1><p class="muted">Basic equipment for simple maintenance. For safety-critical or complex repairs, use a professional bike workshop.</p></div>
+ <div class="grid two">
+  <div class="card"><h2>Available equipment</h2><div id="repair-list"></div></div>
+  <div class="card"><h2>Report a problem</h2><p class="muted">Tell the housing provider if a tool is missing, the pump is broken, or a bike needs attention.</p>
+   <form id="issue-form"><div class="field"><label for="issue-resident">Resident ID / household code</label><input id="issue-resident" required placeholder="e.g. APT-204"></div><div class="field"><label for="issue-type">What needs attention?</label><select id="issue-type"><option>Shared bike fault</option><option>Repair station / pump</option><option>Missing tool</option><option>Lock or storage issue</option><option>Other</option></select></div><div class="field"><label for="issue-details">Describe the problem</label><textarea id="issue-details" rows="3" required placeholder="What happened? Where is the problem?"></textarea></div><button class="btn-primary" type="submit">Submit report</button><div id="issue-message" aria-live="polite"></div></form>
   </div>
-  <section class="content-section" id="how">
-    <div class="section-head"><div><span class="eyebrow">The essentials</span><h2>Everything in one place.</h2></div><p>Simple tools and shared bikes to support everyday cycling.</p></div>
-    <div class="feature-grid">
-      <a href="#borrow" class="feature"><span class="feature-icon green">↗</span><small>SHARE & RIDE</small><h3>Borrow a Bike</h3><p>Choose a normal bike, an e-bike or a cargo bike — all free.</p><b>Check availability →</b></a>
-      <a href="#repair" class="feature"><span class="feature-icon yellow">⌁</span><small>KEEP ROLLING</small><h3>Repair Your Bike</h3><p>Use the shared repair station and follow simple maintenance guides.</p><b>Explore repair tips →</b></a>
-      <a href="#report" class="feature"><span class="feature-icon coral">＋</span><small>HELP US IMPROVE</small><h3>Report a Problem</h3><p>Tell the housing provider if a bike or tool needs attention.</p><b>Send a report →</b></a>
-      <a href="#about" class="feature"><span class="feature-icon blue">◎</span><small>OUR SHARED SPACE</small><h3>About Our Bike Hub</h3><p>Learn how residents and housing providers keep the hub working.</p><b>Meet the hub →</b></a>
-    </div>
-  </section>
-  <section class="green-band"><div><span class="eyebrow pale">A better way to get around</span><h2>Small journeys.<br>Positive change.</h2><p>For short everyday trips, cycling can be a practical alternative to driving. A shared Bike Hub makes bikes, basic repair tools and helpful information easier to access close to home.</p><a href="#about" class="btn btn-white">Discover the hub <span>→</span></a></div><div class="benefit-list"><article><span>01</span><div><b>Free to use</b><p>Registered residents borrow shared bikes and use repair tools without paying.</p></div></article><article><span>02</span><div><b>Choose your ride</b><p>Pick a normal bicycle, an electric bicycle or a cargo bicycle.</p></div></article><article><span>03</span><div><b>Look after the hub</b><p>Return bikes on time and report problems so the next resident can ride.</p></div></article></div></section>
-  <section class="content-section"><div class="closing-cta"><div><span class="eyebrow">Your next trip starts here</span><h2>Make room for a greener journey.</h2></div><a href="#borrow" class="btn">Borrow a bike for free <span>↗</span></a></div></section>
+ </div>
+ <div class="section grid"><div class="card"><h3>1. Check tyres</h3><p class="muted small">Use the pump and check the pressure range printed on the tyre sidewall.</p></div><div class="card"><h3>2. Inspect before riding</h3><p class="muted small">Check brakes, tyres, steering and lights. Do not ride if something feels unsafe.</p></div><div class="card"><h3>3. Report defects</h3><p class="muted small">Do not attempt complex repairs or use a damaged shared bike. Report it for inspection.</p></div></div>
 </section>
 
-<section class="page inner" id="borrow">
-  <div class="page-intro"><span class="eyebrow">Shared locally</span><h1>Borrow a bike.<br><em>For free.</em></h1><p>Choose the bicycle that suits your journey. All bikes are free for registered residents of participating properties.</p><div class="prototype-note">DEMO INVENTORY · 3 normal bikes · 1 e-bike · 1 cargo bike</div></div>
-  <div class="filter-bar"><div><b>Our shared fleet</b><span id="fleetSummary">Checking availability…</span></div><div class="filter-controls"><label for="filterDate">Check date</label><input type="date" id="filterDate"><label for="filterStart">From</label><select id="filterStart"></select><label for="filterEnd">To</label><select id="filterEnd"></select></div></div>
-  <div id="bikeGrid" class="bike-grid"></div>
-  <div id="noBikes" class="empty hidden">No bikes are available for this time slot. Try another time or date.</div>
-  <div class="info-note"><span>ⓘ</span><p><b>Booking rules</b><br>Choose a start and end time. The initial limit is two hours per booking. Bikes marked as needing maintenance or out of service cannot be booked. Collection and return instructions are shown after confirmation.</p></div>
-  <div class="section-head booking-head"><div><span class="eyebrow">Your activity</span><h2>Upcoming bookings</h2></div><span class="count-label" id="residentBookingCount">Sign in to view your bookings</span></div>
-  <div id="residentBookings" class="booking-list"></div>
+<section id="page-mybookings" class="hidden">
+ <div class="page-title"><div class="eyebrow">Your reservations</div><h1 style="font-size:36px">My bookings</h1><p class="muted">Enter the same resident ID used to book. You can view or cancel future reservations.</p></div>
+ <div class="card"><div style="display:flex;gap:10px;max-width:600px;align-items:end;flex-wrap:wrap"><div class="field" style="flex:1;min-width:220px"><label for="lookup-resident">Resident ID / household code</label><input id="lookup-resident" placeholder="e.g. APT-204"></div><button class="btn-primary" id="lookup-btn">Show my bookings</button></div><div id="my-booking-results" style="margin-top:20px"></div></div>
 </section>
 
-<section class="page inner" id="repair">
-  <div class="page-intro"><span class="eyebrow">Keep rolling</span><h1>Repair your bike.</h1><p>Our shared repair station is free to use for your own bicycle. Take care of the tools and leave the space ready for the next person.</p></div>
-  <div class="equipment-grid">
-    <article><span class="equipment-icon">◉</span><div><b>Floor pump</b><small>Pressure gauge included</small></div><span class="equipment-status" id="pumpPublicStatus">Available</span></article>
-    <article><span class="equipment-icon">⌁</span><div><b>Repair stand</b><small>Hold your bike steady</small></div><span class="equipment-status" id="standPublicStatus">Available</span></article>
-    <article><span class="equipment-icon">⚒</span><div><b>Hex keys & screwdrivers</b><small>For small adjustments</small></div><span class="equipment-status" id="toolsPublicStatus">Available</span></article>
-    <article><span class="equipment-icon">◌</span><div><b>Tyre levers & patch kit</b><small>Availability depends on supplies</small></div><span class="equipment-status" id="patchPublicStatus">Check before use</span></article>
-  </div>
-  <div class="safety"><span>!</span><div><b>Safety first</b><p>Never ride a bicycle with faulty brakes or another safety-critical problem. Complex repairs should be handled by a professional bicycle mechanic. If shared equipment is broken or missing, report it before use.</p></div></div>
-  <div class="section-head"><div><span class="eyebrow">Step-by-step</span><h2>Simple maintenance guides.</h2></div><p>These guides cover basic checks only. Stop if you are unsure.</p></div>
-  <div class="guide-grid">
-    <article class="guide"><span>01</span><div class="guide-symbol">◉</div><h3>Inflate your tyres</h3><p>Remove the valve cap and attach the pump securely. Pump in short bursts, then remove the pump and replace the cap.</p><ul><li>Check the valve type first.</li><li>Use the correct pump head.</li><li>Follow the pressure range on the tyre.</li></ul></article>
-    <article class="guide"><span>02</span><div class="guide-symbol">◌</div><h3>Check tyre pressure</h3><p>Tyres should not look flat or have visible damage.</p><ul><li>Look for cuts, bulges and embedded objects.</li><li>Use a gauge when available.</li><li>Check pressure before longer trips.</li></ul></article>
-    <article class="guide"><span>03</span><div class="guide-symbol">⌕</div><h3>Identify a puncture</h3><p>A tyre that keeps losing air may have a puncture or a damaged valve.</p><ul><li>Inspect the tyre carefully.</li><li>Do not handle sharp objects with bare hands.</li><li>Ask a mechanic if you are unsure.</li></ul></article>
-    <article class="guide"><span>04</span><div class="guide-symbol">✓</div><h3>Basic bicycle checks</h3><p>Make a quick check before riding to catch common problems.</p><ul><li>Check tyres and wheels.</li><li>Look for loose parts.</li><li>Make sure lights and reflectors are present where needed.</li></ul></article>
-    <article class="guide"><span>05</span><div class="guide-symbol">↔</div><h3>Check your brakes</h3><p>Brakes should feel firm and stop the bike safely.</p><ul><li>Squeeze both brake levers.</li><li>Walk the bike and test each brake gently.</li><li>Do not ride if either brake is faulty.</li></ul></article>
-    <article class="guide"><span>06</span><div class="guide-symbol">⚒</div><h3>Use tools safely</h3><p>Use the right tool for the job. Never force a bolt or adjustment.</p><ul><li>Keep fingers away from moving parts.</li><li>Return tools after use.</li><li>Report broken or missing equipment.</li></ul><a href="#report" class="text-link">Report an issue →</a></article>
-  </div>
+<section id="page-rating" class="hidden">
+ <div class="page-title"><div class="eyebrow">Proposed housing-provider standard</div><h1 style="font-size:36px">How the star system works</h1><p class="muted">The stars rate how well a housing provider supports cycling at its residential property. They do not rate individual residents or the quality of a specific bicycle.</p></div>
+ <div class="notice" style="margin-bottom:16px"><strong>Important:</strong> This is our proposed concept for the project. Energicentrum Gotland has not confirmed these official levels or criteria.</div>
+ <div class="grid">
+  <div class="level"><h3><span class="stars">★</span> Bronze</h3><p><strong>Basic cycling support</strong></p><ul><li>Convenient bicycle parking</li><li>Working pump and basic repair tools</li><li>Clear signs and QR instructions</li><li>Someone is responsible for maintenance</li></ul><span class="pill">Starting level</span></div>
+  <div class="level"><h3><span class="stars">★★</span> Silver</h3><p><strong>More convenient cycling</strong></p><p class="small muted">Must meet all Bronze criteria, plus:</p><ul><li>Secure / weather-protected storage</li><li>Shared standard bicycles residents can book</li><li>Clear collection and return process</li><li>Regular checks are recorded</li></ul><span class="pill">Bronze + extra services</span></div>
+  <div class="level"><h3><span class="stars">★★★</span> Gold</h3><p><strong>A strong cycling offer</strong></p><p class="small muted">Must meet all Silver criteria, plus:</p><ul><li>E-bike and/or cargo-bike access</li><li>Fault reporting and response process</li><li>Usage monitoring and resident feedback</li><li>Annual improvement plan</li></ul><span class="pill">Silver + advanced services</span></div>
+ </div>
+ <div class="section card"><h2>Think of it like levels in a game</h2><div class="grid three" style="margin-top:14px"><div><strong>★ Bronze = Start</strong><p class="muted small">The basics are available.</p></div><div><strong>★★ Silver = Improve</strong><p class="muted small">Residents can borrow bikes and store them securely.</p></div><div><strong>★★★ Gold = Excellent support</strong><p class="muted small">The provider offers different bike types, tracks issues and improves the service.</p></div></div><p style="margin-top:16px">A provider earns a level only when it meets the checklist for that level. The levels are cumulative: to earn Gold, it must also meet Bronze and Silver criteria.</p></div>
 </section>
 
-<section class="page inner" id="report">
-  <div class="page-intro"><span class="eyebrow">Help us improve</span><h1>Report a problem.</h1><p>Tell the housing provider what needs attention. In this prototype, reports are saved in this browser only.</p></div>
-  <div class="report-layout"><aside class="report-aside"><span class="report-symbol">＋</span><h2>See something?<br>Say something.</h2><p>Help keep shared bikes and repair equipment safe for everyone.</p><div class="aside-rule"><b>What happens next?</b><p>Your demo report gets a reference number and appears in the local admin dashboard. It is not sent to a real housing provider.</p></div></aside>
-  <form id="reportForm" class="form-card"><h2>Problem details</h2><p class="muted">Fields marked with * are required.</p>
-    <label for="reportCategory">Problem category *</label><select id="reportCategory" required><option value="">Choose a category</option><option>Broken repair tools</option><option>Damaged normal bicycle</option><option>Electric bicycle or battery problem</option><option>Damaged cargo bicycle</option><option>Missing equipment</option><option>Other maintenance issue</option></select>
-    <label for="reportBike">Bicycle / equipment ID</label><select id="reportBike"><option value="">Not applicable / not sure</option></select>
-    <label for="reportDescription">Description *</label><textarea id="reportDescription" rows="5" minlength="8" required placeholder="Describe the issue and where you noticed it."></textarea>
-    <label for="reportPhoto">Photo (optional)</label><input type="file" id="reportPhoto" accept="image/*"><small class="help">Prototype limitation: the photo is not uploaded or stored.</small>
-    <label for="reportContact">Contact details (optional)</label><input id="reportContact" placeholder="Email or phone">
-    <button class="btn full" type="submit">Submit demo report <span>→</span></button>
-  </form></div><div id="reportResult" class="success hidden" role="status"></div>
-</section>
-
-<section class="page inner" id="rating">
-  <div class="page-intro centered"><span class="eyebrow">Our proposed framework</span><h1>Build a more<br><em>bike-friendly</em> neighbourhood.</h1><p>Three levels help housing providers improve their facilities step by step. Each level includes all requirements from the previous level.</p></div>
-  <div class="rating-cards">
-    <article class="rating bronze"><div class="rating-top"><span>BRONZE</span><b>★</b></div><h2>Basic Bike Hub</h2><p>The essential setup for an accessible and useful repair point.</p><ul><li>Accessible bicycle parking and hub location</li><li>Working repair tools and pump</li><li>QR code and maintenance instructions</li><li>Documented security and maintenance plan</li></ul><small>LEVEL 01</small></article>
-    <article class="rating silver"><div class="rating-top"><span>SILVER</span><b>★★</b></div><h2>Shared Bike Hub</h2><p>Everything in Bronze, plus free shared bicycles.</p><ul><li>All Bronze requirements</li><li>Secure bicycle storage</li><li>Free shared normal bicycles</li><li>Working booking system and clear collection/return process</li></ul><small>LEVEL 02</small></article>
-    <article class="rating gold"><div class="rating-top"><span>GOLD</span><b>★★★</b></div><h2>Well-Managed Bike Hub</h2><p>A maintained service that improves through feedback.</p><ul><li>All Silver requirements</li><li>Shared e-bikes and/or cargo bicycles</li><li>Regular documented equipment inspections</li><li>Fault-reporting and repair process</li><li>Usage monitoring and resident feedback</li></ul><small>LEVEL 03</small></article>
-  </div>
-  <div class="disclaimer"><span>ⓘ</span><p><b>Important:</b> These criteria and rating levels are proposed for this project. They are not an official Energicentrum Gotland certification.</p></div>
-</section>
-
-<section class="page inner" id="about">
-  <div class="page-intro"><span class="eyebrow">About the project</span><h1>A shared space for<br><em>better everyday cycling.</em></h1><p>The Neighbourhood Bike Hub brings shared bicycles, basic repair equipment and practical information closer to residents in Gotland.</p></div>
-  <div class="about-grid"><div><h2>How the hub works</h2><p>Housing providers and housing associations install and manage a physical Bike Hub within residential properties. Registered residents can borrow normal bicycles, electric bicycles and cargo bicycles for free, or use the repair station for their own bike.</p><p>The website helps residents check availability, request a booking, read repair guides and report issues. The housing provider manages the fleet, maintenance, resident access and the real collection process.</p><a class="btn" href="#borrow">Explore the bikes <span>↗</span></a></div><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=1000&q=85" alt="Bicycle in a green outdoor setting"></div>
-  <div class="section-head"><div><span class="eyebrow">Who does what?</span><h2>Shared responsibility.</h2></div></div>
-  <div class="role-grid"><article><span>01</span><h3>Residents</h3><p>Register, book a bike, follow hub rules, return bikes on time and report faults.</p></article><article><span>02</span><h3>Housing provider</h3><p>Manage access, bookings, the bicycle fleet, equipment checks and maintenance.</p></article><article><span>03</span><h3>Project partners</h3><p>Energicentrum Gotland could potentially support the concept with guidance and encourage participation.</p></article></div>
-  <div class="disclaimer"><span>ⓘ</span><p>This is a demonstration prototype. It does not connect to a real housing provider or official service.</p></div>
-</section>
-
-<section class="page inner" id="qr">
-  <div class="qr-card"><span class="qr-label">NEIGHBOURHOOD BIKE HUB</span><span class="eyebrow">Welcome, neighbour</span><h1>Your hub.<br><em>Your next ride.</em></h1><p>Quick access to the shared bicycles and repair station. No app required.</p><div class="qr-links"><a href="#borrow"><span>↗</span><div><b>Borrow a bicycle for free</b><small>Choose a bike and check availability</small></div><strong>→</strong></a><a href="#repair"><span>⌁</span><div><b>Repair instructions</b><small>Simple checks before you ride</small></div><strong>→</strong></a><a href="#report"><span>＋</span><div><b>Report a problem</b><small>Tell us about equipment issues</small></div><strong>→</strong></a><a href="#about"><span>ⓘ</span><div><b>Hub rules & contact</b><small>How the shared hub works</small></div><strong>→</strong></a></div><div class="qr-rules"><b>Before you go</b><p>Return the bike on time, leave tools ready for the next person and report damaged equipment. Never ride with faulty brakes.</p></div><small class="qr-url" id="qrUrl"></small></div>
-</section>
-
-<section class="page inner" id="admin">
-  <div class="page-intro"><span class="eyebrow">Housing provider</span><h1>Hub management.</h1><p>Manage fleet availability, bookings, resident registrations and maintenance reports.</p><span class="prototype-note">PROTOTYPE ADMIN · DEMO DATA STORED IN THIS BROWSER</span></div>
-  <div id="adminGate" class="admin-gate"><span class="lock">⌑</span><h2>Administrator sign-in required</h2><p>Sign in with the sample administrator account to access management tools.</p><button class="btn" id="adminLoginBtn">Sign in as demo administrator</button></div>
-  <div id="adminDashboard" class="hidden">
-    <div class="admin-stats"><article><span>Total bicycles</span><b id="statTotal">5</b><small>In demo fleet</small></article><article><span>Available now</span><b id="statAvailable">0</b><small>Ready to borrow</small></article><article><span>Upcoming bookings</span><b id="statBookings">0</b><small>Active reservations</small></article><article><span>Open reports</span><b id="statReports">0</b><small>Need follow-up</small></article></div>
-    <div class="admin-columns">
-      <div class="admin-card"><div class="admin-card-head"><div><h2>Bicycle fleet</h2><p>Update status and battery information.</p></div><button class="btn btn-small" id="addBike">+ Add bicycle</button></div><div id="adminFleet" class="fleet-admin"></div><div id="bikeEditor" class="editor hidden"><h3 id="editorTitle">Add bicycle</h3><form id="bikeForm"><input type="hidden" id="editOriginalId"><label for="bikeId">Bicycle ID *</label><input id="bikeId" required placeholder="e.g. NB-06"><label for="bikeType">Type *</label><select id="bikeType"><option>Normal bicycle</option><option>Electric bicycle</option><option>Cargo bicycle</option></select><label for="bikeStatus">Status *</label><select id="bikeStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><div id="batteryField"><label for="bikeBattery">Battery status</label><select id="bikeBattery"><option>100%</option><option>75%</option><option>50%</option><option>25%</option><option>Needs charging</option><option>Not applicable</option></select></div><div class="editor-actions"><button class="btn btn-small" type="submit">Save bicycle</button><button class="btn btn-outline btn-small" type="button" id="cancelBikeEdit">Cancel</button></div></form></div></div>
-      <div class="admin-card"><div class="admin-card-head"><div><h2>Hub settings</h2><p>Configure the maximum booking duration.</p></div></div><label for="durationLimit">Booking limit</label><select id="durationLimit"><option value="1">1 hour</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="6">6 hours</option></select><button class="btn full" id="saveDuration">Save booking limit</button><div class="divider"></div><h3>Repair station equipment</h3><div class="equipment-admin"><label for="pumpStatus">Pump</label><select id="pumpStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><label for="standStatus">Repair stand</label><select id="standStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><label for="toolsStatus">Tools</label><select id="toolsStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><label for="patchStatus">Puncture kit</label><select id="patchStatus"><option>Available</option><option>Needs Maintenance</option><option>Out of Service</option></select><button class="btn btn-outline full" id="saveRepairStatus">Save repair equipment</button></div></div>
-    </div>
-    <div class="admin-card table-card"><div class="admin-card-head"><div><h2>Upcoming bookings</h2><p>Review resident reservations.</p></div><button class="btn btn-outline btn-small" id="exportCsv">Export CSV ↓</button></div><div class="table-wrap"><table><thead><tr><th>Resident</th><th>Bike</th><th>Date</th><th>Time</th><th>Resident ID</th><th>Status</th><th></th></tr></thead><tbody id="adminBookings"></tbody></table></div><div id="adminBookingEmpty" class="empty hidden">No bookings have been made yet.</div></div>
-    <div class="admin-card table-card"><div class="admin-card-head"><div><h2>Maintenance reports</h2><p>Follow issues until they are resolved.</p></div><span id="adminReportCount" class="count-label"></span></div><div id="adminReports" class="admin-report-list"></div><div id="adminReportEmpty" class="empty">No reports yet.</div></div>
-    <div class="admin-card"><div class="admin-card-head"><div><h2>Resident registration</h2><p>Review demo resident accounts and access status.</p></div></div><div id="adminResidents" class="resident-list"></div></div>
-    <div class="admin-card"><div class="admin-card-head"><div><h2>Monthly usage</h2><p>Active demo bookings by bicycle category.</p></div></div><div id="usageBars" class="usage-bars"></div></div>
-  </div>
+<section id="page-admin" class="hidden">
+ <div class="page-title"><div class="eyebrow">Prototype management view</div><h1 style="font-size:36px">Admin demo</h1><p class="muted">For a presentation/demo: review reservations, mark bike status and review resident fault reports. This is not a secure production admin system.</p></div>
+ <div class="kpis" id="admin-kpis"></div>
+ <div class="section card"><div class="section-head"><h2>Bike fleet</h2><button class="btn-light" id="reset-demo">Reset demo data</button></div><div class="table-wrap"><table><thead><tr><th>Bike</th><th>Type</th><th>Status</th><th>Action</th></tr></thead><tbody id="fleet-table"></tbody></table></div></div>
+ <div class="section card"><h2>All bookings</h2><div class="table-wrap" id="admin-bookings"></div></div>
+ <div class="section card"><h2>Resident issue reports</h2><div class="table-wrap" id="admin-issues"></div></div>
+ <div class="notice section">Production version should use a real backend, resident authentication, access-control permissions, payment integration, email/SMS notifications, and GDPR-aware data retention. This local demo does not provide those security features.</div>
 </section>
 </main>
-
-<footer class="footer"><div class="footer-top"><a class="brand" href="#home"><span class="brand-mark">↗</span><span>Neighbourhood<strong>Bike Hub</strong></span></a><p>Your neighbourhood. Your bike. Your greener journey.</p><div class="footer-nav"><a href="#borrow">Borrow a bike</a><a href="#repair">Repair guide</a><a href="#rating">Our rating</a><a href="#qr">Quick access</a><a href="#admin">Admin</a></div></div><div class="footer-bottom"><span>© 2026 Neighbourhood Bike Hub · University innovation project</span><span>All borrowing and repair tools are free <b>✳</b></span></div></footer>
-
-<div class="modal-backdrop hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-  <div class="modal"><button class="modal-close" id="loginClose" aria-label="Close">×</button><span class="eyebrow">Resident access</span><h2 id="loginTitle">Welcome back.</h2><p>Sign in or register with a demo resident account to book a bike.</p><div class="tabs"><button class="tab active" data-tab="login">Login</button><button class="tab" data-tab="register">Register</button></div>
-    <form id="loginForm"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required placeholder="resident@example.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required placeholder="Enter password"><div id="registerFields" class="hidden"><label for="registerName">Full name</label><input id="registerName" placeholder="Your full name"><label for="registerId">Resident / apartment ID</label><input id="registerId" placeholder="e.g. A-204"><label class="checkbox-line"><input type="checkbox" id="registerApproved"> Administrator-approved registration (demo only)</label></div><div id="loginError" class="form-error hidden"></div><button class="btn full" id="loginSubmit" type="submit">Sign in</button></form>
-    <div class="demo-accounts"><b>Sample resident</b><span>resident@example.com / BikeHub123</span><b>Sample administrator</b><span>admin@bikehub.demo / AdminHub123</span><small>Prototype authentication only. Do not use real passwords or personal data.</small></div>
-  </div>
-</div>
-<div class="modal-backdrop hidden" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
-  <div class="modal booking-modal"><button class="modal-close" id="bookingClose" aria-label="Close">×</button><span class="eyebrow">Free shared bicycle</span><h2 id="bookingModalTitle">Book your ride.</h2><p id="selectedBikeLabel"></p><form id="bookingForm"><input type="hidden" id="selectedBikeId"><label for="bookingDate">Date *</label><input type="date" id="bookingDate" required><div class="two-col"><div><label for="bookingStart">Start time *</label><select id="bookingStart" required></select></div><div><label for="bookingEnd">End time *</label><select id="bookingEnd" required></select></div></div><div id="bookingCheck" class="inline-msg">Choose a date and time.</div><div id="bookingError" class="form-error hidden"></div><div class="free-price"><span>Booking cost</span><b>0 kr · Free</b></div><button type="submit" class="btn full">Confirm free booking <span>→</span></button></form>
-  </div>
-</div>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-<script src="app.js"></script>
+<div class="footer">Neighbourhood Bike Hub • Concept website for the Bike-Friendly Neighbourhoods challenge • Demo data is stored locally in this browser.</div>
+<div id="modal-root"></div>
+<script>
+const PRICE={standard:20,ebike:60,cargo:80}; // example SEK per 2 hours after introductory offer
+const TYPE={standard:{label:'Standard bicycle',emoji:'🚲'},ebike:{label:'Electric bicycle',emoji:'⚡🚲'},cargo:{label:'Cargo bike',emoji:'🚲📦'}};
+const DEFAULT_BIKES=[
+{id:'S-01',type:'standard',status:'Available'},{id:'S-02',type:'standard',status:'Available'},{id:'S-03',type:'standard',status:'Available'},
+{id:'E-01',type:'ebike',status:'Available'},{id:'C-01',type:'cargo',status:'Available'}
+];
+const EQUIPMENT=['Repair stand','Floor pump with pressure gauge','Hex keys and screwdrivers','Tyre levers','Basic puncture repair kit','Secure tool storage','QR-linked repair and safety instructions'];
+const get=(k,def)=>{try{const v=JSON.parse(localStorage.getItem('nbh_'+k));return v===null?def:v}catch{return def}};
+const set=(k,v)=>localStorage.setItem('nbh_'+k,JSON.stringify(v));
+function bikes(){return get('bikes',DEFAULT_BIKES)}
+function bookings(){return get('bookings',[])}
+function issues(){return get('issues',[])}
+function usedFree(id){return bookings().filter(b=>b.resident.toLowerCase()===id.toLowerCase()&&!b.cancelled&&!b.freeCancelled).length}
+function fmtDate(d){return new Date(d+'T12:00:00').toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})}
+function priceFor(type,hours,resident){const freeLeft=Math.max(0,5-usedFree(resident));if(freeLeft>0)return 0;return Math.round(PRICE[type]*Number(hours)/2)}
+function showPage(name){document.querySelectorAll('main section[id^="page-"]').forEach(s=>s.classList.add('hidden'));document.getElementById('page-'+name).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));if(name==='book')refreshBooking();if(name==='mybookings')renderMyBookings();if(name==='admin')renderAdmin();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function renderHomeBikes(){document.getElementById('home-bike-list').innerHTML=Object.keys(TYPE).map(t=>`<div class="card bike-card"><div class="bike-top"><div class="bike-emoji">${TYPE[t].emoji}</div><span class="pill">Bookable</span></div><h3>${TYPE[t].label}</h3><div class="price">${PRICE[t]} SEK <small>/ 2 hours after free offer</small></div><p class="muted small">${t==='standard'?'Affordable option for everyday local trips.':t==='ebike'?'Extra support for longer trips and hills.':'Carry groceries, equipment or larger loads.'}</p><div class="card-bottom"><span class="small muted">First 5 bookings free</span><button class="btn-primary" onclick="document.getElementById('bikeType').value='${t}';showPage('book')">Book</button></div></div>`).join('')}
+function setMinDate(){const d=new Date();document.getElementById('date').min=d.toISOString().slice(0,10);document.getElementById('date').value=d.toISOString().slice(0,10)}
+function initTimes(){const s=document.getElementById('start');s.innerHTML='';for(let h=7;h<=20;h++){const o=document.createElement('option');o.value=String(h).padStart(2,'0')+':00';o.textContent=o.value;s.appendChild(o)}}
+function refreshBooking(){const type=document.getElementById('bikeType').value;const date=document.getElementById('date').value;const start=document.getElementById('start').value;const hours=Number(document.getElementById('duration').value);const resident=document.getElementById('resident').value.trim();const idSel=document.getElementById('bikeId');const startMin=start?Number(start.slice(0,2))*60:0;const endMin=startMin+hours*60;
+ const av=bikes().filter(b=>b.type===type&&b.status==='Available'&&!bookings().some(r=>!r.cancelled&&r.bikeId===b.id&&r.date===date&&!(endMin<=Number(r.start.slice(0,2))*60||startMin>=Number(r.start.slice(0,2))*60+Number(r.hours)*60)));
+ idSel.innerHTML=av.length?av.map(b=>`<option value="${b.id}">${b.id} — ${TYPE[b.type].label}</option>`).join(''):'<option value="">No bikes available at this time</option>';
+ const p=resident?priceFor(type,hours,resident):null;document.getElementById('price-display').textContent=p===null?'—':p+' SEK';document.getElementById('price-note').textContent=resident?(p===0?`Free introductory booking. ${Math.max(0,5-usedFree(resident))} free booking(s) remaining before this booking.`:'Intro offer used. Standard rate applies.'):'Enter your resident ID to calculate the intro offer.';
+ document.getElementById('price-table').innerHTML=Object.keys(TYPE).map(t=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><span>${TYPE[t].emoji} ${TYPE[t].label}</span><strong>${PRICE[t]} SEK / 2h</strong></div>`).join('')+'<p class="small muted" style="margin-top:10px">1 hour = half rate; 3 hours = 1.5×; 4 hours = 2×. First five bookings are free.</p>';
+}
+['resident','bikeType','duration','date','start'].forEach(id=>document.getElementById(id).addEventListener('change',refreshBooking));
+document.getElementById('resident').addEventListener('input',refreshBooking);
+document.getElementById('booking-form').addEventListener('submit',e=>{e.preventDefault();const resident=document.getElementById('resident').value.trim();const type=document.getElementById('bikeType').value;const date=document.getElementById('date').value;const start=document.getElementById('start').value;const hours=Number(document.getElementById('duration').value);const bikeId=document.getElementById('bikeId').value;const msg=document.getElementById('booking-message');if(!resident||!bikeId){msg.innerHTML='<div class="error">Please enter your resident code and choose an available bike.</div>';return}const startMin=Number(start.slice(0,2))*60,endMin=startMin+hours*60;const conflict=bookings().some(r=>!r.cancelled&&r.bikeId===bikeId&&r.date===date&&!(endMin<=Number(r.start.slice(0,2))*60||startMin>=Number(r.start.slice(0,2))*60+Number(r.hours)*60));if(conflict){msg.innerHTML='<div class="error">This bike was just booked for that time. Please choose another time.</div>';refreshBooking();return}
+ const now=new Date();const booking={id:'NBH-'+Math.random().toString(36).slice(2,8).toUpperCase(),resident,type,date,start,hours,bikeId,price:priceFor(type,hours,resident),cancelled:false,created:now.toISOString()};const arr=bookings();arr.push(booking);set('bookings',arr);msg.innerHTML=`<div class="success"><strong>Booking confirmed: ${booking.id}</strong><br>${TYPE[type].label} ${bikeId} • ${fmtDate(date)} at ${start} for ${hours} hour(s). Price: <strong>${booking.price} SEK</strong>.<br>Keep this booking ID. No payment is taken in this prototype.</div>`;refreshBooking();renderHomeBikes()});
+function renderMyBookings(){const id=document.getElementById('lookup-resident').value.trim();const root=document.getElementById('my-booking-results');if(!id){root.innerHTML='<div class="empty">Enter your resident code above to view your bookings.</div>';return}const arr=bookings().filter(b=>b.resident.toLowerCase()===id.toLowerCase());if(!arr.length){root.innerHTML='<div class="empty">No bookings found for this resident code.</div>';return}root.innerHTML='<div class="table-wrap"><table><thead><tr><th>Booking</th><th>Bike</th><th>Date / time</th><th>Price</th><th>Status</th><th></th></tr></thead><tbody>'+arr.slice().reverse().map(b=>`<tr><td>${b.id}</td><td>${TYPE[b.type].label} (${b.bikeId})</td><td>${fmtDate(b.date)} • ${b.start}, ${b.hours}h</td><td>${b.price} SEK</td><td>${b.cancelled?'<span class="pill red">Cancelled</span>':'<span class="pill">Confirmed</span>'}</td><td>${!b.cancelled&&new Date(b.date+'T'+b.start)>new Date()?`<button class="btn-danger" onclick="cancelBooking('${b.id}')">Cancel</button>`:''}</td></tr>`).join('')+'</tbody></table></div>'}
+document.getElementById('lookup-btn').addEventListener('click',renderMyBookings);
+function cancelBooking(id){const arr=bookings();const b=arr.find(x=>x.id===id);if(!b)return;b.cancelled=true;set('bookings',arr);renderMyBookings();renderAdmin()}
+document.getElementById('issue-form').addEventListener('submit',e=>{e.preventDefault();const item={id:'ISS-'+Math.random().toString(36).slice(2,7).toUpperCase(),resident:document.getElementById('issue-resident').value.trim(),type:document.getElementById('issue-type').value,details:document.getElementById('issue-details').value.trim(),date:new Date().toISOString(),resolved:false};const a=issues();a.push(item);set('issues',a);document.getElementById('issue-message').innerHTML='<div class="success">Report submitted in this demo. The housing provider can review it in Admin demo.</div>';e.target.reset();renderAdmin()});
+function renderAdmin(){const bs=bookings(),active=bs.filter(b=>!b.cancelled),is=issues(),fleet=bikes();document.getElementById('admin-kpis').innerHTML=`<div class="kpi"><span class="muted small">Fleet size</span><strong>${fleet.length}</strong></div><div class="kpi"><span class="muted small">Active bookings</span><strong>${active.length}</strong></div><div class="kpi"><span class="muted small">Issue reports</span><strong>${is.filter(i=>!i.resolved).length}</strong></div><div class="kpi"><span class="muted small">Recorded booking revenue</span><strong>${active.reduce((n,b)=>n+b.price,0)} SEK</strong></div>`;
+ document.getElementById('fleet-table').innerHTML=fleet.map(b=>`<tr><td><strong>${b.id}</strong></td><td>${TYPE[b.type].label}</td><td><span class="pill ${b.status==='Available'?'':b.status==='Needs Maintenance'?'warn':'red'}">${b.status}</span></td><td><select aria-label="Change status for ${b.id}" onchange="changeBikeStatus('${b.id}',this.value)">${['Available','Needs Maintenance','Out of Service'].map(x=>`<option ${b.status===x?'selected':''}>${x}</option>`).join('')}</select></td></tr>`).join('');
+ document.getElementById('admin-bookings').innerHTML=bs.length?'<table><thead><tr><th>ID</th><th>Resident</th><th>Bike</th><th>Date/time</th><th>Price</th><th>Status</th></tr></thead><tbody>'+bs.slice().reverse().map(b=>`<tr><td>${b.id}</td><td>${escapeHtml(b.resident)}</td><td>${b.bikeId} — ${TYPE[b.type].label}</td><td>${fmtDate(b.date)} ${b.start} (${b.hours}h)</td><td>${b.price} SEK</td><td>${b.cancelled?'Cancelled':'Confirmed'}</td></tr>`).join('')+'</tbody></table>':'<div class="empty">No bookings yet.</div>';
+ document.getElementById('admin-issues').innerHTML=is.length?'<table><thead><tr><th>ID</th><th>Resident</th><th>Type</th><th>Details</th><th>Status</th><th></th></tr></thead><tbody>'+is.slice().reverse().map(i=>`<tr><td>${i.id}</td><td>${escapeHtml(i.resident)}</td><td>${escapeHtml(i.type)}</td><td>${escapeHtml(i.details)}</td><td>${i.resolved?'Resolved':'Open'}</td><td>${!i.resolved?`<button class="btn-light" onclick="resolveIssue('${i.id}')">Mark resolved</button>`:''}</td></tr>`).join('')+'</tbody></table>':'<div class="empty">No issue reports yet.</div>'}
+function changeBikeStatus(id,status){const a=bikes();const b=a.find(x=>x.id===id);if(b){b.status=status;set('bikes',a);renderAdmin();refreshBooking()}}
+function resolveIssue(id){const a=issues();const i=a.find(x=>x.id===id);if(i){i.resolved=true;set('issues',a);renderAdmin()}}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('reset-demo').addEventListener('click',()=>{if(confirm('Reset all local demo bookings, reports and bike status?')){['bookings','issues','bikes'].forEach(k=>localStorage.removeItem('nbh_'+k));renderAdmin();refreshBooking();renderHomeBikes()}});
+function renderRepair(){document.getElementById('repair-list').innerHTML=EQUIPMENT.map((e,i)=>`<div style="display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)"><span class="pill">${String(i+1).padStart(2,'0')}</span><span>${e}</span></div>`).join('')}
+setMinDate();initTimes();renderHomeBikes();renderRepair();refreshBooking();
+</script>
 </body></html>
